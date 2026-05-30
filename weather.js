@@ -23,7 +23,13 @@ searchBtn.addEventListener("click", async () => {
       `;
 
       let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`);
-      // console.log(response);
+      console.log(response);
+      if(!response.ok){
+         resultBox.innerHTML = `
+         <h3> City Not Found...</h3>
+         `;
+         return;
+      }
 
       let data = await response.json();
       console.log(data);
